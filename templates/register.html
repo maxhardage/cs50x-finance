@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+<!-- https://getbootstrap.com/docs/4.1/components/forms/#validation -->
+    <form action="/register" method="post" id="form">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" id="username" name="username" placeholder="Username" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="password" placeholder="Password" type="password" required>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="confirmation" placeholder="Re-enter Password" type="password">
+        </div>
+        <button class="btn btn-primary" id = "register" type="submit" onclick="check_function()">Register</button>
+
+        <div class="alert alert-danger collapse" role="alert" id="alert">
+            <strong>Warning:</strong> Username already taken.
+            <button type="button" class="close" aria-label="Close" id="alertClose">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </form>
+
+    <script>
+        document.getElementById("register").addEventListener("click", function(event){
+            event.preventDefault();
+        });
+
+        let username = document.getElementById('username');
+
+        function check_function() {
+            $.get('/check?username=' + username.value, function(data) {
+                if (data == false) {
+                    $('#alert').show('fade');
+                }
+                else if (data == true) {
+                        document.getElementById("form").submit();
+                        //note: ID field for form button cannot be submit due to above
+                }
+            });
+        };
+
+        $(document).ready(function() {
+            $('#alertClose').click(function() {
+                $('#alert').hide('fade');
+            });
+        });
+
+    </script>
+{% endblock %}

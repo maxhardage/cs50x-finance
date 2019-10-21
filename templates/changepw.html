@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Change Password
+{% endblock %}
+
+{% block main %}
+<!-- https://getbootstrap.com/docs/4.1/components/forms/#validation -->
+    <form action="/changepw" method="post" id="form" class="needs-validation" novalidate>
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" id="currentpw" name="currentpw" placeholder="Current Password" type="password" required>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="newpw" placeholder="New Password" type="password" required>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="newpw2" placeholder="Re-enter Password" type="password" required>
+        </div>
+        <button class="btn btn-primary" id = "submit" type="submit" onclick="check_function()">Submit</button>
+    </form>
+
+    <script>
+    </script>
+{% endblock %}

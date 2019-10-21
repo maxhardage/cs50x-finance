@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Display Quote
+{% endblock %}
+
+{% block main %}
+
+    <table class="table">
+      <tbody>
+        <tr>
+          <th scope="row">Compay Name</th>
+          <td>{{ name }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Latest Price</th>
+          <td>{{ price }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Ticker Symbol</th>
+          <td>{{ symbol }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+{% endblock %}
